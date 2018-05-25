@@ -1,0 +1,13 @@
+# Acronym creater
+function acronymMaker(str){
+  var list = str.split(' ');
+  var acronym = "";
+  
+  for (i=0;i<list.length;i++){
+    var char = list[i][0];
+    acronym = acronym + char;
+  }
+  return acronym;
+}
+output = acronymMaker("Portable Network Graphics");
+console.log(output);
