@@ -1,0 +1,100 @@
+#Hangman code
+import random
+
+print('Welcome to Hangman!')
+
+# Insert the code from last exercise here.
+with open('wordbank.txt', 'r') as f:
+  num = random.randint(0, 267750)
+  i = 0
+  for line in f:
+    line = line.strip()
+    i += 1
+    if i == num:
+      line = line.strip()
+      break
+
+inc = 0
+
+noose = (" _______\n" +
+        " |      |\n" +
+        " |\n" +
+        " |\n" +
+        " |\n" +
+        " |\n" +
+        "=========")
+
+# Now ask the user to guess the word
+guess = list('_' * len(line))
+print(' '.join(guess))  # This joins the guess with the blank spaces.
+
+while list(line) != guess:
+  letter = input('\nGuess a letter: ').upper()
+  if letter in list(line):
+    i = 0
+    while i < len(line):
+      if list(line)[i] == letter:
+        guess[i] = letter
+        print(' '.join(guess))
+      i += 1
+  else:
+    inc += 1
+    print('incorrect')
+    if inc == 1:
+      noose = (" _______\n" +
+        " |      |\n" +
+        " |      0\n" +
+        " |\n" +
+        " |\n" +
+        " |\n" +
+        "====")  
+    elif inc == 2:
+      noose = (" _______\n" +
+        " |      |\n" +
+        " |      0\n" +
+        " |      |\n" +
+        " |\n" +
+        " |\n" +
+        "====")  
+    elif inc == 3:
+      noose = (" _______\n" +
+        " |      |\n" +
+        " |      0\n" +
+        " |     /| \n"+
+        " |\n" +
+        " |\n" +
+        "====")  
+    elif inc == 4:
+      noose = (" _______\n" +
+        " |      |\n" +
+        " |      0\n" +
+        " |     /|\ \n"+
+        " |\n" +
+        " |\n" +
+        "====")  
+    elif inc == 5:
+      noose = (" _______\n" +
+        " |      |\n" +
+        " |      0\n" +
+        " |     /|\ \n"+
+        " |     / \n"+
+        " |\n" +
+        "====")  
+    elif inc == 6:
+      noose = (" _______\n" +
+        " |      |\n" +
+        " |      0\n" +
+        " |     /|\ \n" +
+        " |     /\ \n"+
+        " |\n" +
+        "====")  
+    print(noose)
+    print(' '.join(guess))
+    
+    if inc == 6:
+      print('The word was actually: ' + str(line) + "\n")
+      print('Game Over!')
+      break
+        
+if list(line) == guess:
+  print('\n\nYou\'re Right! It\'s ' + line + '.')
