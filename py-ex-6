@@ -1,0 +1,31 @@
+#code to see your age across planets
+print ('Welcome to your Year Calculator!')
+print ('================================')
+age = int(input('Please enter your age in seconds: '))
+
+earth = 31557600 
+mercury = 0.2408467
+venus = 0.61519726 
+mars = 1.8808158
+jupiter = 11.86261
+saturn = 29.447498
+uranus = 84.016846
+neptune =164.79132
+years = (age/earth)
+
+print('Your age in Earth years is: ')
+print(age/earth)
+print('Your age in Mercury years is: ')
+print(age/mercury)
+print('Your age in Venus years is: ')
+print(age/venus)
+print('Your age in Mars years is: ')
+print(age/mars)
+print('Your age in Jupiter years is: ')
+print(age/jupiter)
+print('Your age in Saturn years is: ')
+print(age/saturn)
+print('Your age in Uranus years is: ')
+print(age/uranus)
+print('Your age in Neptune years is: ')
+print(age/neptune)
