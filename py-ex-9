@@ -1,0 +1,19 @@
+#simon says code
+orders = int(input())
+print()
+user = []
+scenario = ""
+
+for i in range(orders):
+  scenario = input()
+  user.append(scenario)
+  
+print()
+
+for x in range(orders):
+  u = user[x]
+  
+  if "simon says" in u:
+    print(user - "simon says")
+  else:
+    print("")
