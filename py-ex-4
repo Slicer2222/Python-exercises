@@ -1,0 +1,107 @@
+#tic tac toe code
+print ("TIC TAC TOE board. Rows and Columns starting from 1,1")
+print ("Game board is printed each time to show progress!")
+
+# Declare the blank game           
+game=[[0,0,0], 
+      [0,0,0],
+      [0,0,0]]
+      
+count = 0
+
+# create the print gameboard function
+
+def print_game(game):
+    print ("\n")
+    for i in range(3):
+        print (str(game[i]) + "\n")
+
+# Insert the checkWin function here.
+
+win = False
+tie = False
+end = False
+rowTie = False
+columnTie = False
+
+def checkWin(bo, le):
+    global win, end
+    if (bo[0][0] == le) and (bo[1][1] == le) and (bo[2][2] == le):
+        #print ("Player", str(le), "wins!")  
+        win = True
+        end = True
+    if (bo[0][2] == le) and (bo[1][1] == le) and (bo[2][0] == le):
+        #print ("Player", str(le), "wins!")  
+        win = True
+        end = True
+    for i in range (0,2):
+        if (bo[i][0] == le) and (bo[i][1] == le) and (bo[i][2] == le):
+            #print ("Player", str(le), "wins!")
+            win = True
+            end = True
+    for i in range (0, 2):
+        if (bo[0][i] == le) and (bo[1][i] == le) and (bo[2][i] == le):
+            #print ("Player", str(le), "wins!")
+            win = True
+            end = True
+            
+    if win == True:
+      print ("Player", str(le), "wins!")
+      
+    win = False
+    return end
+    
+def checkTie(bo):
+  global tie, rowTie, columnTie
+  for i in range(0,2):
+    if bo[0][i] != 0 and bo[1][i] != 0 and bo[2][i] != 0 and win != True:
+      rowTie = True
+    if bo[i][0] != 0 and bo[i][1] != 0 and bo[i][2] != 0 and win != True:
+      columnTie = True
+    if rowTie == True and columnTie == True:
+      tie = True
+
+# Now lets start the game
+while True:
+  #Insert the code from Step 6
+  spot = input("Enter the row,column in same format as given: ")
+  spot = spot.split(",") # This will remove the comma
+  
+  row = int(spot[0]) -1
+  column = int(spot[1]) -1
+  
+  if count%2==0:
+   print ("\nPlayer 1's Turn!")
+   if game[row][column] == 0:  # Make sure the spot is blank
+    game[row][column] = 'X'   # if it's blank, mark an X
+   else:
+     print ("Try Again!")   # if it's not blank, try again
+     count-=1   # this will reset the counter, so you can try again
+   print_game(game)  # print your new game board
+   
+  else:
+    # Now do the same thing for player 2 as you did for player 1
+    # Player 2 is an 'O
+    print ("\nPlayer 2's Turn!")
+    if game[row][column] == 0:  # Make sure the spot is blank
+        game[row][column] = 'O'   # if it's blank, mark an X
+    else:
+      print ("Try Again!")   # if it's not blank, try again
+      count-=1   # this will reset the counter, so you can try again
+    print_game(game)  # print your new game board
+    
+    #Increase your count
+  count += 1
+  
+  #check for a win using your function that you created
+  checkWin(game, 'X')
+  checkWin(game, 'O')
+  checkTie(game)
+  
+  if checkWin(game, 'X') == True or checkWin(game, 'O') == True:
+    break
+  elif checkTie(game) == True:
+    print('It is a tie!')
+    break
+
+print ("\nGame Over!")
