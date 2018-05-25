@@ -1,0 +1,13 @@
+# temp coverter
+function cToF(celsius) {
+  // this is celsius to Fahrenheit
+  console.log(celsius+"\xB0C is " + (celsius*(1.8) + 32)+"\xB0F") 
+}
+
+function fToC(fahrenheit) {
+  // this is Fahrenheit to Celsius
+  console.log(fahrenheit+"\xB0F is " + ((fahrenheit-32)*(5/9))+"\xB0C") 
+}
+
+cToF(60);
+fToC(45);
